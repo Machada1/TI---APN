@@ -14,3 +14,9 @@ Um sistema de reservas online prático que permite uma gestão eficiente do alug
 * Jean Estanislau de Souza Guimarães
 * Leni Rocha Bento
 * Otávio Soares da Costa
+
+* Objetivo geral e específico
+
+Elaborar um sistema de controle de empréstimos e devoluções de livros, auxiliando também na atualização e manutenção do acervo da biblioteca.
+
+
