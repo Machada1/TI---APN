@@ -14,6 +14,6 @@ Um sistema de reservas online prático que permite uma gestão eficiente do cont
 * Jean Estanislau de Souza Guimarães
 * Leni Rocha Bento
 * Otávio Soares da Costa
-
+* Pedro Henrique Morais de Assis
 
 
