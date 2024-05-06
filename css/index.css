@@ -1,0 +1,168 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav ul li a:hover {
+    color: #666;
+}
+
+.main {
+    text-align: center;
+    padding: 50px 0;
+}
+
+
+.library-info {
+    width: 50%;
+    float: left;
+}
+
+.images {
+    width: 50%;
+    float: right;
+}
+
+.images img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 20px; /* Distância do conteúdo principal */
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.contact-info, .social-media {
+    flex: 0 1 48%; /* Para que os itens não se expandam demais */
+}
+.contact-info h3, .social-media h3 {
+    margin-bottom: 10px;
+}
+.social-media ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.social-media ul li {
+    margin-right: 10px;
+}
+.social-media ul li:last-child {
+    margin-right: 0;
+}
+.social-media ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 100px; /* Distância do topo da página */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+p.error-message {
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+
+.chave-container {
+    position: relative;
+}
+#chave {
+    width: calc(100% - 32px); /* Ajustando o tamanho para o botão */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+#toggle-chave {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 30px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+#toggle-chave img {
+    width: 100%;
+}

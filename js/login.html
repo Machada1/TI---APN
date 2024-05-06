@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Libr</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Libr Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="login-form" action="home.html" method="post"> <!-- Mudança aqui para redirecionar para a home logado -->
+            <label for="chave">Chave de Acesso:</label>
+            <div class="chave-container">
+                <input type="password" id="chave" name="chave" value="libr01" required>
+                <button type="button" id="toggle-chave" onclick="toggleVisibility()"><img src="/img/eye.png" alt="Mostrar"></button>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <p class="error-message" id="erro">Chave incorreta. Por favor, tente novamente.</p> <!-- Mensagem de erro -->
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="contact-info">
+                <h3>Contato</h3>
+                <p>E-mail: contato@libr.com</p>
+                <p>Telefone: (00) 1234-5678</p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleVisibility() {
+            var chaveInput = document.getElementById("chave");
+            var toggleButton = document.getElementById("toggle-chave");
+            if (chaveInput.type === "password") {
+                chaveInput.type = "text";
+                toggleButton.innerHTML = '<img src="eye-off.png" alt="Esconder">';
+            } else {
+                chaveInput.type = "password";
+                toggleButton.innerHTML = '<img src="eye.png" alt="Mostrar">';
+            }
+        }
+    </script>
+</body>
+</html>
