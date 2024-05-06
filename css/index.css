@@ -166,3 +166,118 @@ p.error-message {
 #toggle-chave img {
     width: 100%;
 }
+
+.option-container {
+    margin-top: 50px;
+}
+.option-container h2 {
+    margin-bottom: 20px;
+}
+.book {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+}
+
+.book:hover {
+    transform: scale(1.1); 
+    cursor: pointer; 
+}
+.book img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.options {
+    text-align: right;
+    margin-bottom: 20px;
+}
+.options a {
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.options a.selected {
+    background-color: #45a049;
+}
+.options a:hover {
+    background-color: #45a049;
+}
+.option-container {
+    margin-top: 20px;
+}
+.option-container h2 {
+    margin-bottom: 20px;
+}
+
+
+#searchContainer {
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 5px;
+}
+
+#searchButton {
+    width: 60%;
+    padding: 10px 15px; /* Ajustado para reduzir o tamanho do botão */
+    background-color: teal;
+    margin: 5px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchButton:hover {
+    background-color: darkcyan;
+}
+
+.book-details {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.book-details img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.book-details h2 {
+    margin-bottom: 10px;
+}
+.book-details p {
+    margin-bottom: 20px;
+}
+.book-details button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.book-details button:hover {
+    background-color: #45a049;
+}

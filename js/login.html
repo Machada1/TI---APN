@@ -24,15 +24,15 @@
 
     <div class="login-container">
         <h1>Login</h1>
-        <form id="login-form" action="home.html" method="post"> <!-- Mudança aqui para redirecionar para a home logado -->
+        <form id="login-form" action="home.html" method="post"> 
             <label for="chave">Chave de Acesso:</label>
             <div class="chave-container">
-                <input type="password" id="chave" name="chave" value="libr01" required>
+                <input type="password" id="chave" name="chave"  required>
                 <button type="button" id="toggle-chave" onclick="toggleVisibility()"><img src="/img/eye.png" alt="Mostrar"></button>
             </div>
             <button type="submit">Entrar</button>
         </form>
-        <p class="error-message" id="erro">Chave incorreta. Por favor, tente novamente.</p> <!-- Mensagem de erro -->
+        <p class="error-message" id="erro">Chave incorreta. Por favor, tente novamente.</p> 
     </div>
 
     <footer>
@@ -54,6 +54,16 @@
     </footer>
 
     <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            var chave = document.getElementById("chave").value;
+            if (chave === "libr01") {
+                window.location.href = "home.html"; 
+            } else {
+                document.getElementById("erro").style.display = "block"; 
+            }
+        });
+
         function toggleVisibility() {
             var chaveInput = document.getElementById("chave");
             var toggleButton = document.getElementById("toggle-chave");
