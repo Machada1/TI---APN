@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libr - Biblioteca</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Libr Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container options">
+        <a href="#" class="selected">Acervo</a>
+        <a href="emprestimos.html">Empréstimos</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="container option-container">
+        <h2>Acervo</h2>
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Digite o nome do livro">
+            <button id="searchButton" onclick="buscarLivro()">Buscar</button>
+        </div>
+        <!-- Bloco de livros do acervo -->
+        <div id="bookContainer">
+            <div class="book" onclick="window.location.href='detalhes_duna.html';">
+                <img src="/img/duna.jpg" alt="livro 1">
+                <h3>Duna</h3>
+            </div>
+            <div class="book" onclick="window.location.href='detalhes_messias.html';">
+                <img src="/img/messias.jpg" alt="Livro 2">
+                <h3>Messias de Duna</h3>
+            </div>
+            <div class="book" onclick="window.location.href='detalhes_filhos.html';">
+                <img src="/img/filhos.jpg" alt="Livro 3">
+                <h3>Filhos de Duna</h3>
+            </div>
+            <div class="book" onclick="window.location.href='detalhes_imperador.html';">
+                <img src="/img/imperador.jpg" alt="Livro 4">
+                <h3>Imperador Deus de Duna</h3>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="contact-info">
+                <h3>Contato</h3>
+                <p>E-mail: contato@libr.com</p>
+                <p>Telefone: (00) 1234-5678</p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function buscarLivro() {
+            var input, filter, books, bookContainer, book, title, i;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            books = document.getElementsByClassName('book');
+            bookContainer = document.getElementById('bookContainer');
+
+            for (i = 0; i < books.length; i++) {
+                book = books[i];
+                title = book.getElementsByTagName('h3')[0];
+                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    book.style.display = '';
+                } else {
+                    book.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
