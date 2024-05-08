@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libr - Biblioteca</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="../img/logo.png" alt="Libr Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container options">
+        <a href="home.html">Acervo</a>
+        <a href="#" class="selected">Empréstimos</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <div class="container option-container">
+        <h2>Empréstimos</h2>
+        <!-- Lista de empréstimos correntes -->
+        <div id="currentLoans">
+            <!-- Os empréstimos serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="contact-info">
+                <h3>Contato</h3>
+                <p>E-mail: contato@libr.com</p>
+                <p>Telefone: (00) 1234-5678</p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Função para carregar os empréstimos
+        function loadLoans() {
+            // Aqui você pode fazer uma requisição AJAX para buscar os empréstimos do servidor
+            // Por enquanto, vamos simular alguns dados de empréstimo
+            var loans = [
+                { 
+                    book: "Duna",
+                    borrower: "João",
+                    loanDate: "2024-05-07",
+                    returnDate: "2024-05-14"
+                },
+                { 
+                    book: "Messias de Duna",
+                    borrower: "João",
+                    loanDate: "2024-05-07",
+                    returnDate: "2024-05-14"
+                },
+                { 
+                    book: "Filhos de Duna",
+                    borrower: "João",
+                    loanDate: "2024-05-07",
+                    returnDate: "2024-05-14"
+                }
+                // Adicione mais empréstimos conforme necessário
+            ];
+
+            var currentLoans = document.getElementById('currentLoans');
+            currentLoans.innerHTML = '';
+
+            loans.forEach(function(loan) {
+                var loanElement = document.createElement('div');
+                loanElement.classList.add('loan');
+
+                // Conteúdo do empréstimo
+                loanElement.innerHTML = `
+                    <h3>${loan.book}</h3>
+                    <p><strong>Emprestado para:</strong> ${loan.borrower}</p>
+                    <p><strong>Data de Empréstimo:</strong> ${loan.loanDate}</p>
+                    <p><strong>Data de Devolução:</strong> ${loan.returnDate}</p>
+                    <div class="loan-buttons">
+                        <button onclick="renewLoan()">Renovar</button>
+                        <button onclick="returnLoan()">Devolução</button>
+                    </div>
+                `;
+
+                currentLoans.appendChild(loanElement);
+            });
+        }
+
+        // Função para renovar empréstimo
+        function renewLoan() {
+            // Lógica para renovar empréstimo
+            alert('Empréstimo renovado com sucesso!');
+        }
+
+        // Função para registrar devolução
+        function returnLoan() {
+            // Lógica para registrar devolução
+            alert('Empréstimo devolvido com sucesso!');
+        }
+
+        // Chama a função para carregar os empréstimos quando a página carrega
+        window.onload = loadLoans;
+    </script>
+</body>
+</html>

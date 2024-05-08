@@ -295,3 +295,39 @@ p.error-message {
 .book-details button:hover {
     background-color: #45a049;
 }
+
+
+.loan {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative; 
+
+}
+
+.loan h3 {
+    margin-top: 0;
+}
+
+.loan p {
+    margin: 5px 0;
+}
+
+.loan-buttons {
+    position: absolute; 
+    margin: 5px;
+    right: 10px; 
+    bottom: 10px; 
+}
+
+.loan-buttons button {
+    padding: 5px 10px; 
+    font-size: 12px; 
+}
+
+
+.loan-buttons button:first-child {
+    margin-right: 5px;
+}
+
