@@ -9,11 +9,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
 .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
+
+.carousel {
+    max-width: 800px; 
+    margin: auto; 
+}
+
+.carousel img {
+    width: 100%; 
+}
+
 
 header {
     background-color: #f2f2f2;
@@ -331,3 +342,42 @@ p.error-message {
     margin-right: 5px;
 }
 
+        .form-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        .form-container h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #007bff; /* Azul padrão do Bootstrap */
+            margin-top: 10px;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3; /* Azul mais escuro no hover */
+        }
