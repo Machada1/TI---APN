@@ -43,20 +43,24 @@
                 <label for="dataLancamento">Ano de Lançamento:</label>
                 <input type="text" id="dataLancamento" name="dataLancamento" required>
 
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" name="genero" required>
+
                 <label for="descricao">Descrição:</label>
                 <textarea id="descricao" name="descricao" required></textarea>
 
+                <label for="imagemCapa">Imagem da Capa:</label>
+                <input type="file" id="imagemCapa" name="imagemCapa" accept="image/*" required>
+
                 <label for="quantidade">Quantidade:</label>
                 <input type="number" id="quantidade" name="quantidade" value="1" min="1" required>
+
+
 
                 <input type="submit" value="Cadastrar Livro">
             </form>
         </div>
     </div>
-
-
-
-    
 
     <footer>
         <div class="container footer-container">
@@ -83,24 +87,23 @@
             var nomeLivro = document.getElementById('nomeLivro').value;
             var autor = document.getElementById('autor').value;
             var dataLancamento = document.getElementById('dataLancamento').value;
+            var genero = document.getElementById('genero').value;
             var descricao = document.getElementById('descricao').value;
             var quantidade = parseInt(document.getElementById('quantidade').value);
+            var imagemCapa = document.getElementById('imagemCapa').files[0];
 
-            // Cria um array para armazenar os livros no armazenamento local
-            var livros = JSON.parse(localStorage.getItem('livros')) || [];
+            // Criar um FormData para enviar os dados incluindo a imagem
+            var formData = new FormData();
+            formData.append('nomeLivro', nomeLivro);
+            formData.append('autor', autor);
+            formData.append('dataLancamento', dataLancamento);
+            formData.append('genero', genero);
+            formData.append('descricao', descricao);
+            formData.append('quantidade', quantidade);
+            formData.append('imagemCapa', imagemCapa);
 
-            // Adiciona o livro ao array 'livros'
-            for (var i = 0; i < quantidade; i++) {
-                livros.push({
-                    nome: nomeLivro,
-                    autor: autor,
-                    dataLancamento: dataLancamento,
-                    descricao: descricao
-                });
-            }
-
-            // Armazena o array de livros no armazenamento local
-            localStorage.setItem('livros', JSON.stringify(livros));
+            // Realizar ações com os dados, como envio para o servidor, etc.
+            console.log(formData);
 
             // Limpa os campos do formulário após o cadastro
             document.getElementById('bookForm').reset();
