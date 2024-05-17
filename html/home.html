@@ -5,30 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libr - Biblioteca</title>
     <link rel="stylesheet" href="../css/index.css">
-    <style>
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="../img/logo.png" alt="Libr Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="about.html">Sobre Nós</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="header"></div>
 
     <div class="container options">
-        <a href="#" class="selected">Acervo</a>
-        <a href="emprestimos.html">Empréstimos</a>
+        <!-- <a href="#" class="selected">Acervo</a>
+        <a href="emprestimos.html">Empréstimos</a> -->
         <a href="cadastro.html">Cadastro</a>
-        <a href="index.html">Logout</a>
+        <!-- <a href="index.html">Logout</a> -->
     </div>
 
     <div class="container option-container">
@@ -67,23 +54,8 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container footer-container">
-            <div class="contact-info">
-                <h3>Contato</h3>
-                <p>E-mail: contato@libr.com</p>
-                <p>Telefone: (00) 1234-5678</p>
-            </div>
-            <div class="social-media">
-                <h3>Redes Sociais</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
+
     <script>
         function buscarLivro() {
             var input, filter, books, bookContainer, book, title, i;

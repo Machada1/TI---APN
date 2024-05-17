@@ -5,30 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libr - Biblioteca</title>
     <link rel="stylesheet" href="../css/index.css">
-    <style>
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="../img/logo.png" alt="Libr Logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="about.html">Sobre Nós</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="container options">
+    <div id="header"></div>
+
+    <!-- <div class="container options">
         <a href="home.html">Acervo</a>
         <a href="emprestimos.html">Empréstimos</a>
         <a href="#" class="selected">Cadastro</a>
         <a href="index.html">Logout</a>
-    </div>
+    </div> -->
 
     <div class="container">
         <div class="form-container">
@@ -54,27 +43,8 @@
         </div>
     </div>
 
+    <div id="footer"></div>
 
-
-    
-
-    <footer>
-        <div class="container footer-container">
-            <div class="contact-info">
-                <h3>Contato</h3>
-                <p>E-mail: contato@libr.com</p>
-                <p>Telefone: (00) 1234-5678</p>
-            </div>
-            <div class="social-media">
-                <h3>Redes Sociais</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
     <script>
         function cadastrarLivro(event) {
             event.preventDefault(); // Evita que o formulário seja submetido normalmente
@@ -104,6 +74,11 @@
 
             // Limpa os campos do formulário após o cadastro
             document.getElementById('bookForm').reset();
+
+            Swal.fire({
+                title: "Cadastro realizado!",
+                icon: "success",
+            });
         }
     </script>
 </body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Libr</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="main" style="min-height: 70vh;">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form id="login-form" action="home.html" method="post">
+                <label for="chave">Chave de Acesso:</label>
+                <div class="chave-container">
+                    <input type="password" id="chave" name="chave" required>
+                    <button type="button" id="toggle-chave" onclick="toggleVisibility()"><img src="/img/eye.png"
+                            alt="Mostrar"></button>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+</body>
+
+<script>
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var chave = document.getElementById("chave").value;
+        if (chave === "libr01") {
+            window.location.href = "home.html";
+        } else {
+            Swal.fire({
+                title: "Chave de acesso incorreta!",
+                icon: "error",
+            });
+        }
+    });
+
+    function toggleVisibility() {
+        var chaveInput = document.getElementById("chave");
+        var toggleButton = document.getElementById("toggle-chave");
+        if (chaveInput.type === "password") {
+            chaveInput.type = "text";
+            toggleButton.innerHTML = '<img src="eye.png" alt="Esconder">';
+        } else {
+            chaveInput.type = "password";
+            toggleButton.innerHTML = '<img src="/img/eye.png" alt="Mostrar">';
+        }
+    }
+</script>
+
+</html>

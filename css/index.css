@@ -7,6 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    min-height: 90vh
 }
 
 
@@ -25,6 +26,12 @@ body {
     width: 100%; 
 }
 
+#teste {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Distribuir os itens horizontalmente, com espaço entre eles */
+    align-items: center; /* Alinhar verticalmente os itens */
+    padding: 20px; /* Adicionar espaçamento interno */
+}
 
 header {
     background-color: #f2f2f2;
@@ -33,14 +40,25 @@ header {
 
 .logo img {
     height: 50px;
+    max-width: 150px;
+}
+
+nav{
+    list-style-type: none;
+    padding: 0; /* Remover padding padrão da lista */
+    margin: 0; /* Remover margem padrão da lista */
+    display: flex; 
+    width: 100%; 
+    justify-content: space-between;
 }
 
 nav ul {
+    display: flex;
     list-style-type: none;
 }
 
-nav ul li {
-    display: inline;
+nav ul li a {
+    display: inline-block;
     margin-right: 20px;
 }
 
@@ -55,10 +73,8 @@ nav ul li a:hover {
 
 .main {
     background-color: #ffffff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 5%; 
 }
 .main h1 {
     font-size: 32px;
@@ -91,8 +107,7 @@ nav ul li a:hover {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
-    margin-top: 20px; /* Distância do conteúdo principal */
+    margin-top: auto; /* Distância do conteúdo principal */
 }
 .footer-container {
     display: flex;
@@ -126,7 +141,7 @@ footer {
 .login-container {
     width: 300px;
     margin: 0 auto;
-    margin-top: 100px; /* Distância do topo da página */
+    /* margin-top: 100px;  Distância do topo da página */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
