@@ -1,13 +1,18 @@
-$(function(){
+$(function () {
     var path = window.location.pathname;
     var parts = path.split('/');
-    var fileName = parts.pop() || parts.pop();
+    var fileName = parts.pop();
 
-    if(fileName == 'about.html' || fileName == 'index.html' || fileName == 'login.html'){
-        $("#header").load("/html/header.html");
-    }else{
-        $("#header").load("/html/headerLogged.html");
+    while (fileName != null) {
+        if (fileName.endsWith('.html') || fileName.endsWith('.php')) {
+            if (fileName == 'about.html' || fileName == 'index.html' || fileName == 'login.html') {
+                $("#header").load("../html/header.html");
+            } else {
+                $("#header").load("../html/headerLogged.php");
+            }
+        }
+
+        fileName = parts.pop();
+
     }
-
-    $("#footer").load("/html/footer.html");
 });

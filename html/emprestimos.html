@@ -6,98 +6,118 @@
     <title>Libr - Biblioteca</title>
     <link rel="stylesheet" href="../css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/js/script.js" defer></script>
+    <script src="../js/script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div id="header"></div>
 
-    <!-- <div class="container options">
-        <a href="home.html">Acervo</a>
-        <a href="#" class="selected">Empréstimos</a>
-        <a href="cadastro.html">Cadastro</a>
-        <a href="index.html">Logout</a>
-    </div> -->
-
     <div class="container option-container" style="min-height: 70vh;">
         <h2>Empréstimos</h2>
-        <!-- Lista de empréstimos correntes -->
         <div id="currentLoans">
-            <!-- Os empréstimos serão adicionados aqui dinamicamente -->
         </div>
     </div>
 
     <div id="footer"></div>
     <script>
-        // Função para carregar os empréstimos
         function loadLoans() {
-            // Aqui você pode fazer uma requisição AJAX para buscar os empréstimos do servidor
-            // Por enquanto, vamos simular alguns dados de empréstimo
-            var loans = [
-                { 
-                    book: "Duna",
-                    borrower: "Diogo",
-                    loanDate: "2024-05-07",
-                    returnDate: "2024-05-14"
+            $.ajax({
+                url: '../php/busca_emprestimos.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (loans) {
+                    var currentLoans = document.getElementById('currentLoans');
+                    currentLoans.innerHTML = '';
+
+                    loans.forEach(function (loan) {
+                        var loanElement = document.createElement('div');
+                        loanElement.classList.add('loan');
+
+                        loanElement.innerHTML = `
+                            <h3>${loan.book}</h3>
+                            <p><strong>Emprestado para:</strong> ${loan.borrower}</p>
+                            <p><strong>Data de Empréstimo:</strong> ${loan.loanDate}</p>
+                            <p><strong>Data de Devolução:</strong> ${loan.returnDate}</p>
+                            <div class="loan-buttons">
+                                <button onclick="renewLoan(${loan.id_emprestimo})">Renovar</button>
+                                <button onclick="returnLoan(${loan.id_emprestimo})">Devolução</button>
+                            </div>
+                        `;
+
+                        currentLoans.appendChild(loanElement);
+                    });
                 },
-                { 
-                    book: "Messias de Duna",
-                    borrower: "João",
-                    loanDate: "2024-05-07",
-                    returnDate: "2024-05-14"
-                },
-                { 
-                    book: "Filhos de Duna",
-                    borrower: "João",
-                    loanDate: "2024-05-07",
-                    returnDate: "2024-05-14"
+                error: function () {
+                    Swal.fire('Erro', 'Não foi possível carregar os empréstimos', 'error');
                 }
-                // Adicione mais empréstimos conforme necessário
-            ];
-
-            var currentLoans = document.getElementById('currentLoans');
-            currentLoans.innerHTML = '';
-
-            loans.forEach(function(loan) {
-                var loanElement = document.createElement('div');
-                loanElement.classList.add('loan');
-
-                // Conteúdo do empréstimo
-                loanElement.innerHTML = `
-                    <h3>${loan.book}</h3>
-                    <p><strong>Emprestado para:</strong> ${loan.borrower}</p>
-                    <p><strong>Data de Empréstimo:</strong> ${loan.loanDate}</p>
-                    <p><strong>Data de Devolução:</strong> ${loan.returnDate}</p>
-                    <div class="loan-buttons">
-                        <button onclick="renewLoan()">Renovar</button>
-                        <button onclick="returnLoan()">Devolução</button>
-                    </div>
-                `;
-
-                currentLoans.appendChild(loanElement);
             });
         }
 
-        // Função para renovar empréstimo
-        function renewLoan() {
-            // Lógica para renovar empréstimo
+        function renewLoan(id) {
             Swal.fire({
-                title: "Empréstimo renovado com sucesso!",
-                icon: "success",
+                title: "Confirmação",
+                text: "Deseja realmente renovar o empréstimo?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '../php/renova_emprestimos.php',
+                        type: 'POST',
+                        data: { id: id },
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.status === 'success') {
+                                Swal.fire('Sucesso', 'Empréstimo renovado com sucesso!', 'success').then(() => {
+                                    loadLoans();
+                                });
+                            } else {
+                                Swal.fire('Erro', response.message, 'error');
+                            }
+                        },
+                        error: function () {
+                            Swal.fire('Erro', 'Não foi possível processar a solicitação', 'error');
+                        }
+                    });
+                }
             });
         }
 
-        // Função para registrar devolução
-        function returnLoan() {
-            // Lógica para registrar devolução
+        function returnLoan(id) {
             Swal.fire({
-                title: "Empréstimo devolvido com sucesso!",
-                icon: "success",
+                title: "Confirmação",
+                text: "Deseja realmente devolver o empréstimo?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '../php/deleta_emprestimos.php',
+                        type: 'POST',
+                        data: { id: id },
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.status === 'success') {
+                                Swal.fire('Sucesso', 'Empréstimo devolvido com sucesso!', 'success').then(() => {
+                                    loadLoans();
+                                });
+                            } else {
+                                Swal.fire('Erro', response.message, 'error');
+                            }
+                        },
+                        error: function () {
+                            Swal.fire('Erro', 'Não foi possível processar a solicitação', 'error');
+                        }
+                    });
+                }
             });
         }
 
-        // Chama a função para carregar os empréstimos quando a página carrega
-        window.onload = loadLoans;
+        document.addEventListener('DOMContentLoaded', loadLoans);
     </script>
 </body>
 </html>

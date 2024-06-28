@@ -1,21 +1,39 @@
+<?php
+
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "biblioteca";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT isbn, titulo_livro, capa FROM tb_livro";
+$livros = $conn->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libr - Biblioteca</title>
     <link rel="stylesheet" href="../css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/js/script.js" defer></script>
+    <script src="../js/script.js" defer></script>
 </head>
+
 <body>
     <div id="header"></div>
 
     <div class="container options">
-        <!-- <a href="#" class="selected">Acervo</a>
-        <a href="emprestimos.html">Empréstimos</a> -->
-        <a href="cadastro.html">Cadastro</a>
-        <!-- <a href="index.html">Logout</a> -->
+        <a href="../html/cadastro.php">Cadastro</a>
     </div>
 
     <div class="container option-container">
@@ -26,31 +44,20 @@
         </div>
         <!-- Bloco de livros do acervo -->
         <div id="bookContainer">
-            <div class="book" onclick="window.location.href='detalhes_duna.html';">
-                <img src="../img/duna.jpg" alt="livro 1">
-                <h3>Duna</h3>
-            </div>
-            <div class="book" onclick="window.location.href='detalhes_messias.html';">
-                <img src="../img/messias.jpg" alt="Livro 2">
-                <h3>Messias de Duna</h3>
-            </div>
-            <div class="book" onclick="window.location.href='detalhes_filhos.html';">
-                <img src="../img/filhos.jpg" alt="Livro 3">
-                <h3>Filhos de Duna</h3>
-            </div>
-            <div class="book" onclick="window.location.href='detalhes_imperador.html';">
-                <img src="../img/imperador.jpg" alt="Livro 4">
-                <h3>Imperador Deus de Duna</h3>
-            </div>
-            <div class="book" onclick="window.location.href='detalhes_hereges.html';">
-                <img src="../img/hereges.jpg" alt="Livro 5">
-                <h3>Hereges de Duna</h3>
-            </div>
-            <div class="book" onclick="window.location.href='detalhes_herdeiras.html';">
-                <img src="../img/herdeiras.jpg" alt="Livro 6">
-                <h3>As Herdeiras de Duna</h3>
-            </div>
-            
+            <?php
+
+            if ($livros->num_rows > 0) {
+                while ($row = $livros->fetch_assoc()) {
+                    echo '<div class="book" >' .
+                        '<a href = "../html/livros.php?isbn='. $row["isbn"] . '">'.
+                        "<img src='" . $row['capa'] . "' alt='" . $row["titulo_livro"] . "'>" .
+                        '</a>'.
+                        '<h3>' . $row["titulo_livro"] . '</h3>' .
+                        '</div>';
+                }
+            }
+
+            ?>
         </div>
     </div>
 
@@ -76,4 +83,5 @@
         }
     </script>
 </body>
+
 </html>
